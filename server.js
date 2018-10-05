@@ -5,6 +5,9 @@ var express = require("express"),
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(function(req, res) {
+    res.status(404).send({url: req.originalUrl + ' not found'});
+});
 
 // Import our routes
 var twitchRoute = require("./api/routes/twitchRoute");
