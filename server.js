@@ -1,10 +1,12 @@
 var express = require("express"),
+    bodyParser = require("body-parser"),
+    morgan = require("morgan")
     app = express(),
-    port = process.env.PORT || 1337,
-    bodyParser = require("body-parser");
+    port = process.env.PORT || 1337;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(morgan("combined"));
 app.use(function(req, res) {
     res.status(404).send({url: req.originalUrl + ' not found'});
 });
