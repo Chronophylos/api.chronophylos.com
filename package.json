@@ -5,8 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js"
+    "start": "nodemon server.js",
+    "release": "release-it"
   },
+  "private": true,
   "keywords": [
     "RESTful",
     "API",
@@ -15,7 +17,8 @@
   "author": "Chronophylos",
   "license": "Unlicense",
   "devDependencies": {
-    "nodemon": "^1.18.4"
+    "nodemon": "^1.18.4",
+    "release-it": "^7.6.1"
   },
   "dependencies": {
     "body-parser": "^1.18.3",
