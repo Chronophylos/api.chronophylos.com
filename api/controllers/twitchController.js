@@ -6,8 +6,18 @@ exports.welcome = function(req, res) {
 
 exports.love = function(req, res) {
     var left = req.query.left;
-    var lLeft = left.toLowerCase();
     var right = req.query.right;
+
+    if (left == undefined) {
+        res.send("Missing parameter left");
+        return;
+    }
+    if (right == undefined) {
+        res.send("Missing parameter right");
+        return;
+    }
+
+    var lLeft = left.toLowerCase();
     var lRight = right.toLowerCase();
 
     if (lLeft == lRight) {
