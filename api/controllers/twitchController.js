@@ -39,7 +39,7 @@ exports.love = function(req, res) {
         res.send("There is 100% <3 between Kevon and Zwiebeln zwiebelW");
     }
 
-    var total = getNum(left) * getNum(right);
+    var total = getNum(lLeft) * getNum(lRight);
     var score = total % 100;
 
     res.send("There is " + score + "% \<3 between " + left + " and " + right + " md7Stirni md7H");
