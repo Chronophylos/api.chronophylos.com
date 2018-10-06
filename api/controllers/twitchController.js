@@ -39,6 +39,7 @@ exports.love = function(req, res) {
 
     if ((lLeft == "furzbart" || lLeft == "doenerdude") && (lRight == "döner" || lRight == "doener")) {
         res.send("There is 100% <3 between Kevon and Zwiebeln zwiebelW");
+        return
     }
 
     var key = getKey(lLeft, lRight);
@@ -46,6 +47,11 @@ exports.love = function(req, res) {
     var value = parseInt(hash.digest("hex"), 16);
 
     var score = value % 101;
+    
+    if (score == 69) {
+        res.send("There is 69% \<3 between " + left + " and " + right + " gachiBASS Clap");
+    }
+
     res.send("There is " + score + "% \<3 between " + left + " and " + right + " md7Stirni md7H");
 };
 
