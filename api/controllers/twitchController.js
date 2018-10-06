@@ -45,7 +45,7 @@ exports.love = function(req, res) {
     var hash = new MD5().update(key);
     var value = parseInt(hash.digest("hex"), 16);
 
-    var score = value % 100;
+    var score = value % 101;
     res.send("There is " + score + "% \<3 between " + left + " and " + right + " md7Stirni md7H");
 };
 
