@@ -19,6 +19,18 @@ exports.love = function(req, res) {
         return;
     }
 
+    left = left.trim();
+    right = right.trim();
+
+    if (left == "") {
+        res.send("Missing parameter left");
+        return;
+    }
+    if (right == "") {
+        res.send("Missing parameter right");
+        return;
+    }
+
     var lLeft = left.toLowerCase();
     var lRight = right.toLowerCase();
 
@@ -39,7 +51,7 @@ exports.love = function(req, res) {
 
     if ((lLeft == "furzbart" || lLeft == "doenerdude") && (lRight == "döner" || lRight == "doener")) {
         res.send("There is 100% <3 between Kevon and Zwiebeln zwiebelW");
-        return
+        return;
     }
 
     var key = getKey(lLeft, lRight);
