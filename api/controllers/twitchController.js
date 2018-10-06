@@ -1,4 +1,5 @@
 "use strict";
+var MD5 = require('md5.js');
 
 exports.welcome = function(req, res) {
     res.send("helo pepeL");
@@ -40,12 +41,20 @@ exports.love = function(req, res) {
         res.send("There is 100% <3 between Kevon and Zwiebeln zwiebelW");
     }
 
-    var total = getNum(lLeft) * getNum(lRight);
-    var score = total % 100;
+    var key = getKey(lLeft, lRight);
+    var hash = new MD5().update(key);
+    var value = parseInt(hash.digest("hex"), 16);
 
+    var score = value % 100;
     res.send("There is " + score + "% \<3 between " + left + " and " + right + " md7Stirni md7H");
 };
 
+function getKey(a, b) {
+    if (a.charCodeAt(0) > b.charCodeAt(0)) {
+        return a + b;
+    }
+    return b + a;
+}
 
 function getNum(A) {
     var outputNum = 0;
