@@ -7,6 +7,7 @@ exports.welcome = function(req, res) {
 exports.love = function(req, res) {
     var left = req.query.left;
     var right = req.query.right;
+    var bot_name = req.query["bot-name"];
 
     if (left == undefined) {
         res.send("Missing parameter left");
@@ -30,8 +31,8 @@ exports.love = function(req, res) {
         return;
     }
 
-    if (lLeft == "streamelements" || lRight == "streamelements") {
-        res.send("Silly organic lifesubstance bots can't feel love MrDestructoid BibleThump");
+    if (lRight == bot_name) {
+        res.send("Silly organic, bots cannot know love MrDestructoid BibleThump");
         return;
     }
 
