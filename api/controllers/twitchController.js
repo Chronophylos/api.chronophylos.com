@@ -19,8 +19,8 @@ exports.love = function(req, res) {
         return;
     }
 
-    left = left.trim();
-    right = right.trim();
+    left = left.trim().replace("\u206D", "");
+    right = right.trim().replace("\u206D", "");
 
     if (left == "") {
         res.send("Missing parameter left");
