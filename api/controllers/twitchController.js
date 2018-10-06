@@ -31,8 +31,12 @@ exports.love = function(req, res) {
     }
 
     if (lLeft == "streamelements" || lRight == "streamelements") {
-        res.send("Silly you bots can't feel love MrDestructoid PepeHands");
+        res.send("Silly organic lifesubstance bots can't feel love MrDestructoid BibleThump");
         return;
+    }
+
+    if ((lLeft == "furzbart" || lLeft == "doenerdude") && (lRight == "döner" || lRight == "doener")) {
+        res.send("There is 100% <3 between Kevon and Zwiebeln zwiebelW");
     }
 
     var total = getNum(left) * getNum(right);
