@@ -55,11 +55,3 @@ function getKey(a, b) {
     }
     return b + a;
 }
-
-function getNum(A) {
-    var outputNum = 0;
-    for (var i = 0; i < A.length; i++) {
-        outputNum += A.charCodeAt(i);
-    }
-    return outputNum;
-}
