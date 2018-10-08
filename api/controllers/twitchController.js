@@ -39,7 +39,7 @@ exports.love = function(req, res) {
         return;
     }
 
-    if (lLeft == "moondye7" || lRight == "moondye7") {
+    if (lRight == "moondye7") {
         res.send("EVERYONE LOVES MEIN HERR gachiS");
         return;
     }
