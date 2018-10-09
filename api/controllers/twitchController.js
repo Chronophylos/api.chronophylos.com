@@ -62,6 +62,7 @@ exports.love = function(req, res) {
     
     if (score == 69) {
         res.send("There is 69% \<3 between " + left + " and " + right + " gachiBASS Clap");
+        return;
     }
 
     res.send("There is " + score + "% \<3 between " + left + " and " + right + " md7Stirni md7H");
