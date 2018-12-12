@@ -16,9 +16,11 @@ app.use(errorHandler()); // error output from code
 
 // Import our routes
 var twitchRoute = require("./api/routes/twitchRoute");
+var parserRoute = require("./api/routes/parserRoute");
 
 // Register them
 twitchRoute(app);
+parserRoute(app);
 
 // Handle 404s
 app.use(function(req, res) {

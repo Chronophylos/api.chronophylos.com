@@ -62,10 +62,11 @@ exports.love = function(req, res) {
     
     if (score == 69) {
         res.send("There is 69% \<3 between " + left + " and " + right + " gachiBASS Clap");
+        return;
     }
 
     var hEmote = "md7H";
-    if (lRight.includes("cat") || lRight.includes("katze") || lRight.includes("kadse")) {
+    if (lRight.indexOf("cat") !== -1 || lRight.indexOf("katze") !== -1 || lRight.indexOf("kadse") !== -1) {
         hEmote = "md7H1";
     }
 
@@ -75,6 +76,7 @@ exports.love = function(req, res) {
 function getKey(a, b) {
     if (a.charCodeAt(0) > b.charCodeAt(0)) {
         return a + b;
+    } else {
+        return b + a;
     }
-    return b + a;
 }
