@@ -64,7 +64,12 @@ exports.love = function(req, res) {
         res.send("There is 69% \<3 between " + left + " and " + right + " gachiBASS Clap");
     }
 
-    res.send("There is " + score + "% \<3 between " + left + " and " + right + " md7Stirni md7H");
+    var hEmote = "md7H";
+    if (lRight.includes("cat") || lRight.includes("katze") || lRight.includes("kadse")) {
+        hEmote = "md7H1";
+    }
+
+    res.send("There is " + score + "% \<3 between " + left + " and " + right + " md7Stirni " + hEmote);
 };
 
 function getKey(a, b) {
