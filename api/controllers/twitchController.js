@@ -5,6 +5,40 @@ exports.welcome = function(req, res) {
     res.send("helo pepeL");
 };
 
+exports.define = function(req, res) {
+    var term = req.query.term;
+
+    if (term == undefined) {
+        res.send("Missing parameter term");
+        return;
+    }
+
+    term = term.trim().replace("\u206D", "");
+
+    if (term == "") {
+        res.send("Missing parameter term");
+        return;
+    }
+
+    const https = require('https');
+
+    https.get('https://api.urbandictionary.com/v0/define?term=' + term, (resp) => {
+        let data = '';
+
+        resp.on('data', (chunk) => {
+        data += chunk;
+        });
+
+        resp.on('end', () => {
+            res.send(JSON.parse(data).list[0].definition)
+        });
+
+    }).on("error", (err) => {
+        console.log("Error in define command: " + err.message);
+    });
+
+};
+
 exports.love = function(req, res) {
     var left = req.query.left;
     var right = req.query.right;

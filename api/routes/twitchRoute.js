@@ -9,4 +9,7 @@ module.exports = function(app) {
     
     app.route("/twitch/love")
         .get(twitch.love);
+    
+    app.route("/twitch/define")
+        .get(twitch.define);
 };
