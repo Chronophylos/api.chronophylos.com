@@ -83,7 +83,7 @@ exports.love = function(req, res) {
         return;
     }
 
-    if ((lLeft == "furzbart" || lLeft == "doenerdude") && (lRight == "döner" || lRight == "doener")) {
+    if ((lLeft == "furzbart" || lLeft == "d0enerdude") && (lRight == "döner" || lRight == "doener")) {
         res.send("There is 100% <3 between Kevon and Zwiebeln zwiebelW");
         return;
     }
