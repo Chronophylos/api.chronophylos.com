@@ -26,11 +26,16 @@ exports.define = function(req, res) {
         let data = '';
 
         resp.on('data', (chunk) => {
-        data += chunk;
+            data += chunk;
         });
 
         resp.on('end', () => {
-            res.send(JSON.parse(data).list[0].definition)
+            let json = JSON.parse(data);
+            if (json !== undefined) {
+                res.send(json.list[0].definition);
+            } else {
+                res.send("no definition found");
+            }
         });
 
     }).on("error", (err) => {

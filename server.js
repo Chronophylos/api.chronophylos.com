@@ -12,7 +12,11 @@ app.use(helmet()); // for security
 app.use(bodyParser.urlencoded({ extended: true })); // encodes stuff i dunno
 app.use(bodyParser.json()); // json i dunno
 app.use(morgan("combined")); // logging in apache 2 style
-app.use(errorHandler()); // error output from code
+// error output from code
+app.use((err, req, res, next) => {
+    console.error(err);
+    res.status(500).send("internal server error");
+});
 
 // Import our routes
 var twitchRoute = require("./api/routes/twitchRoute");
