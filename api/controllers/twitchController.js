@@ -1,6 +1,10 @@
 "use strict";
 var MD5 = require('md5.js');
 
+let definitions = {
+    "libertyass": "Freiheitsoarsch"
+};
+
 exports.welcome = function(req, res) {
     res.send("helo pepeL");
 };
@@ -17,6 +21,13 @@ exports.define = function(req, res) {
 
     if (term == "") {
         res.send("Missing parameter term");
+        return;
+    }
+
+    let lTerm = term.toLowerCase();
+
+    if (lTerm in definitions) {
+        res.send(definitions[lTerm]);
         return;
     }
 
