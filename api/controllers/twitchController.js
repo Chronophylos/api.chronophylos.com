@@ -31,7 +31,7 @@ exports.define = function(req, res) {
 
         resp.on('end', () => {
             let json = JSON.parse(data);
-            if (json !== undefined) {
+            if (json.list[0] !== undefined) {
                 res.send(json.list[0].definition);
             } else {
                 res.send("no definition found");
