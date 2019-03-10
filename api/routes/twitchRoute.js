@@ -12,4 +12,7 @@ module.exports = function(app) {
     
     app.route("/twitch/define")
         .get(twitch.define);
+
+    app.route("/twitch/weather/:location")
+        .get(twitch.weather)
 };
