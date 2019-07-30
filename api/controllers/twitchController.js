@@ -136,7 +136,7 @@ exports.love = function (req, res) {
   }
 
   var hEmote = 'md7H'
-  if (lRight.indexOf('cat') !== -1 || lRight.indexOf('katze') !== -1 || lRight.indexOf('kadse') !== -1) {
+  if (lRight.includes('cat') || lRight.includes('katze') || lRight.includes('kadse')) {
     hEmote = 'md7H1'
   }
 
