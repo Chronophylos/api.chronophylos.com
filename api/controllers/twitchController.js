@@ -103,12 +103,17 @@ exports.love = function(req, res) {
     var lRight = right.toLowerCase();
 
     if (lLeft == lRight) {
-        res.send("We know you love yourself.");
+        res.send("We know you love yourself. WeirdChamp");
         return;
     }
 
     if (lRight == "moondye7") {
-        res.send("EVERYONE LOVES MEIN HERR gachiS");
+        res.send("EVERYONE LOVES DADDY! gachiHYPER");
+        return;
+    }
+    
+    if (lRight == "chat") {
+        res.send("There is 100% <3 between " + left + " and the chat! md7H");
         return;
     }
 
