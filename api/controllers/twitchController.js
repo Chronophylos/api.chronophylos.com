@@ -1,155 +1,152 @@
-"use strict";
-const MD5 = require('md5.js');
-const https = require("https")
+'use strict'
+const MD5 = require('md5.js')
+const https = require('https')
 
 const definitions = {
-    "libertyass": "Freiheitsoarsch"
-};
-
-exports.welcome = function(req, res) {
-    res.send("helo pepeL");
-};
-
-exports.weather = function(req, res) {
-    var loc = req.params.location
-
-    https.get("https://de.wttr.in/" + loc + "?format=%l:+%c+%t+%h+%w+%m", resp => {
-        let data = ""
-
-        resp.on("data", chunk => {
-            data += chunk;
-        });
-
-        resp.on("end", () => {
-            res.send(data)
-        });
-
-    }).on("error", (err) => {
-        console.log("Error in weather command: " + err.message);
-    });
+  'libertyass': 'Freiheitsoarsch'
 }
 
-exports.define = function(req, res) {
-    var term = req.query.term;
+exports.welcome = function (req, res) {
+  res.send('helo pepeL')
+}
 
-    if (term == undefined) {
-        res.send("Missing parameter term");
-        return;
-    }
+exports.weather = function (req, res) {
+  var loc = req.params.location
 
-    term = term.trim().replace("\u206D", "");
+  https.get('https://de.wttr.in/' + loc + '?format=%l:+%c+%t+%h+%w+%m', resp => {
+    let data = ''
 
-    if (term == "") {
-        res.send("Missing parameter term");
-        return;
-    }
+    resp.on('data', chunk => {
+      data += chunk
+    })
 
-    let lTerm = term.toLowerCase();
+    resp.on('end', () => {
+      res.send(data)
+    })
+  }).on('error', (err) => {
+    console.log('Error in weather command: ' + err.message)
+  })
+}
 
-    if (lTerm in definitions) {
-        res.send(definitions[lTerm]);
-        return;
-    }
+exports.define = function (req, res) {
+  var term = req.query.term
 
-    https.get('https://api.urbandictionary.com/v0/define?term=' + term, (resp) => {
-        let data = '';
+  if (term === undefined) {
+    res.send('Missing parameter term')
+    return
+  }
 
-        resp.on('data', (chunk) => {
-            data += chunk;
-        });
+  term = term.trim().replace('\u206D', '')
 
-        resp.on('end', () => {
-            let json = JSON.parse(data);
-            if (json.list[0] !== undefined) {
-                res.send(json.list[0].definition);
-            } else {
-                res.send("no definition found");
-            }
-        });
+  if (term === '') {
+    res.send('Missing parameter term')
+    return
+  }
 
-    }).on("error", (err) => {
-        console.log("Error in define command: " + err.message);
-    });
+  let lTerm = term.toLowerCase()
 
-};
+  if (lTerm in definitions) {
+    res.send(definitions[lTerm])
+    return
+  }
 
-exports.love = function(req, res) {
-    var left = req.query.left;
-    var right = req.query.right;
-    var bot_name = req.query["bot-name"];
+  https.get('https://api.urbandictionary.com/v0/define?term=' + term, (resp) => {
+    let data = ''
 
-    if (left == undefined) {
-        res.send("Missing parameter left");
-        return;
-    }
-    if (right == undefined) {
-        res.send("Missing parameter right");
-        return;
-    }
+    resp.on('data', (chunk) => {
+      data += chunk
+    })
 
-    left = left.trim().replace("\u206D", "");
-    right = right.trim().replace("\u206D", "");
+    resp.on('end', () => {
+      let json = JSON.parse(data)
+      if (json.list[0] !== undefined) {
+        res.send(json.list[0].definition)
+      } else {
+        res.send('no definition found')
+      }
+    })
+  }).on('error', (err) => {
+    console.log('Error in define command: ' + err.message)
+  })
+}
 
-    if (left == "") {
-        res.send("Missing parameter left");
-        return;
-    }
-    if (right == "") {
-        res.send("Missing parameter right");
-        return;
-    }
+exports.love = function (req, res) {
+  var left = req.query.left
+  var right = req.query.right
+  var botName = req.query['bot-name']
 
-    var lLeft = left.toLowerCase();
-    var lRight = right.toLowerCase();
+  if (left === undefined) {
+    res.send('Missing parameter left')
+    return
+  }
+  if (right === undefined) {
+    res.send('Missing parameter right')
+    return
+  }
 
-    if (lLeft == lRight) {
-        res.send("We know you love yourself. WeirdChamp");
-        return;
-    }
+  left = left.trim().replace('\u206D', '')
+  right = right.trim().replace('\u206D', '')
 
-    if (lRight == "moondye7") {
-        res.send("EVERYONE LOVES DADDY! gachiHYPER");
-        return;
-    }
-    
-    if (lRight == "chat") {
-        res.send("There is 100% <3 between " + left + " and the chat! md7H");
-        return;
-    }
+  if (left === '') {
+    res.send('Missing parameter left')
+    return
+  }
+  if (right === '') {
+    res.send('Missing parameter right')
+    return
+  }
 
-    if (lRight == bot_name) {
-        res.send("Silly organic, bots cannot know love MrDestructoid BibleThump");
-        return;
-    }
+  var lLeft = left.toLowerCase()
+  var lRight = right.toLowerCase()
 
-    if ((lLeft == "furzbart" || lLeft == "d0enerdude") && (lRight == "döner" || lRight == "doener")) {
-        res.send("There is 100% <3 between Kevon and Zwiebeln zwiebelW");
-        return;
-    }
+  if (lLeft === lRight) {
+    res.send('We know you love yourself. WeirdChamp')
+    return
+  }
 
-    var key = getKey(lLeft, lRight);
-    var hash = new MD5().update(key);
-    var value = parseInt(hash.digest("hex"), 16);
+  if (lRight === 'moondye7') {
+    res.send('EVERYONE LOVES DADDY! gachiHYPER')
+    return
+  }
 
-    var score = value % 101;
-    
-    if (score == 69) {
-        res.send("There is 69% \<3 between " + left + " and " + right + " gachiBASS Clap");
-        return;
-    }
+  if (lRight === 'chat') {
+    res.send('There is 100% <3 between ' + left + ' and the chat! md7H')
+    return
+  }
 
-    var hEmote = "md7H";
-    if (lRight.indexOf("cat") !== -1 || lRight.indexOf("katze") !== -1 || lRight.indexOf("kadse") !== -1) {
-        hEmote = "md7H1";
-    }
+  if (lRight === botName) {
+    res.send('Silly organic, bots cannot know love MrDestructoid BibleThump')
+    return
+  }
 
-    res.send("There is " + score + "% \<3 between " + left + " and " + right + " md7Stirni " + hEmote);
-};
+  if ((lLeft === 'furzbart' || lLeft === 'd0enerdude') && (lRight === 'döner' || lRight === 'doener')) {
+    res.send('There is 100% <3 between Kevon and Zwiebeln zwiebelW')
+    return
+  }
 
-function getKey(a, b) {
-    if (a.charCodeAt(0) > b.charCodeAt(0)) {
-        return a + b;
-    } else {
-        return b + a;
-    }
+  var key = getKey(lLeft, lRight)
+  var hash = new MD5().update(key)
+  var value = parseInt(hash.digest('hex'), 16)
+
+  var score = value % 101
+
+  if (score === 69) {
+    res.send('There is 69% <3 between ' + left + ' and ' + right + ' gachiBASS Clap')
+    return
+  }
+
+  var hEmote = 'md7H'
+  if (lRight.indexOf('cat') !== -1 || lRight.indexOf('katze') !== -1 || lRight.indexOf('kadse') !== -1) {
+    hEmote = 'md7H1'
+  }
+
+  res.send('There is ' + score + '% <3 between ' + left + ' and ' + right + ' md7Stirni ' + hEmote)
+}
+
+function getKey (a, b) {
+  if (a.charCodeAt(0) > b.charCodeAt(0)) {
+    return a + b
+  } else {
+    return b + a
+  }
 }
