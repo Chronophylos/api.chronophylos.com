@@ -10,24 +10,6 @@ exports.welcome = function (req, res) {
   res.send('helo pepeL')
 }
 
-exports.weather = function (req, res) {
-  var loc = req.params.location
-
-  https.get('https://de.wttr.in/' + loc + '?format=%l:+%c+%t+%h+%w+%m', resp => {
-    let data = ''
-
-    resp.on('data', chunk => {
-      data += chunk
-    })
-
-    resp.on('end', () => {
-      res.send(data)
-    })
-  }).on('error', (err) => {
-    console.log('Error in weather command: ' + err.message)
-  })
-}
-
 exports.define = function (req, res) {
   var term = req.query.term
 
