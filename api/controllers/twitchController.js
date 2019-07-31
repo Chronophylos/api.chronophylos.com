@@ -104,7 +104,7 @@ exports.love = function (req, res) {
     return
   }
 
-  if (lRight === 'moondye7') {
+  if (lRight === 'moondye7' || lRight === 'moondye' || lRight === 'daniel') {
     res.send('EVERYONE LOVES DADDY! gachiHYPER')
     return
   }
