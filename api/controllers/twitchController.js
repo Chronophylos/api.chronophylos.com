@@ -3,7 +3,8 @@ const MD5 = require('md5.js')
 const https = require('https')
 
 const definitions = {
-  'libertyass': 'Freiheitsoarsch'
+  'libertyass': 'Freiheitsoarsch',
+  'ritzenspalt': 'One of the worst [Mods] [Twitch] [EU]'
 }
 
 exports.welcome = function (req, res) {
