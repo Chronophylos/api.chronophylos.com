@@ -4,7 +4,9 @@ const https = require('https')
 
 const definitions = {
   'libertyass': 'Freiheitsoarsch',
-  'ritzenspalt': 'One of the worst [Mods] [Twitch] [EU]'
+  'ritzenspalt': 'One of the worst [Mods] [Twitch] [EU]',
+  'qtea': 'Grill PogChamp',
+  'qteeaa': 'Grill PogChamp'
 }
 
 exports.welcome = function (req, res) {
